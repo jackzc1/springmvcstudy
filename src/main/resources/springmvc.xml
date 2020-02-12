@@ -18,4 +18,11 @@
         <property name="prefix" value="/pages/"></property>
         <property name="suffix" value=".jsp"></property>
     </bean>
+    <bean id="myConverter" class="com.soft.converter.MyConverter"></bean>
+
+    <bean id="conversionService2" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters" ref="myConverter"></property>
+    </bean>
+
+    <mvc:annotation-driven conversion-service="conversionService2"></mvc:annotation-driven>
 </beans>
