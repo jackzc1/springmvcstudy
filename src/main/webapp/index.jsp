@@ -32,5 +32,10 @@
 
 <input type="button" id="jsonTest" value="jsonTest"/>
 <a href="/json1">responseBody</a>
+
+<form action="/fileTest" method="post" enctype="multipart/form-data">
+    file:<input type="file" name="filename"/>
+    <input type="submit" value="提交"/>
+</form>
 </body>
 </html>

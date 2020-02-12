@@ -6,8 +6,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * Created by Administrator on 2020/2/12.
@@ -30,5 +35,25 @@ public class UserController {
     public @ResponseBody User jsonTest(@RequestBody User user) {
         System.out.println(user);
         return user;
+    }
+
+    @RequestMapping(value = "/fileTest", method = RequestMethod.POST)
+    public String jsonTest1(MultipartFile filename, HttpServletRequest request) {
+        String realPath = request.getSession().getServletContext().getRealPath("/upload");
+        System.out.println(realPath);
+        File file = new File(realPath);
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+        String originalFilename = filename.getOriginalFilename();
+        String uuid = UUID.randomUUID().toString().replace("-", "").toUpperCase();
+        String name = uuid +"_"+originalFilename;
+        System.out.println(name);
+        try {
+            filename.transferTo(new File(file, name));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "success";
     }
 }

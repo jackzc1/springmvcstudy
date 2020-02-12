@@ -27,5 +27,10 @@
         <property name="converters" ref="myConverter"></property>
     </bean>
 
+    <!--文件上传-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="8388608"></property>
+    </bean>
+
     <mvc:annotation-driven conversion-service="conversionService2"></mvc:annotation-driven>
 </beans>
