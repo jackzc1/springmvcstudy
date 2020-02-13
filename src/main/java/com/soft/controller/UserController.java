@@ -56,4 +56,14 @@ public class UserController {
         }
         return "success";
     }
+
+    /**
+     * 测试异常处理组件
+     * @return
+     */
+    @RequestMapping(value = "/testerror")
+    public String error() {
+        int i = 1/0;
+        return "success";
+    }
 }

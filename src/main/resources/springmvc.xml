@@ -32,5 +32,8 @@
         <property name="maxUploadSize" value="8388608"></property>
     </bean>
 
+    <!--注册异常处理组件-->
+    <bean id="myExceptionHandler" class="com.soft.exception.MyExceptionHandler"></bean>
+
     <mvc:annotation-driven conversion-service="conversionService2"></mvc:annotation-driven>
 </beans>

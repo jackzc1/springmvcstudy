@@ -37,5 +37,7 @@
     file:<input type="file" name="filename"/>
     <input type="submit" value="提交"/>
 </form>
+
+<a href="/testerror">testerror</a>
 </body>
 </html>
