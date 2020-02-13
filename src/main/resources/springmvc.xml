@@ -35,5 +35,13 @@
     <!--注册异常处理组件-->
     <bean id="myExceptionHandler" class="com.soft.exception.MyExceptionHandler"></bean>
 
+    <!--配置拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/login"/>
+            <bean class="com.soft.intercepter.MyIntercepter"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
     <mvc:annotation-driven conversion-service="conversionService2"></mvc:annotation-driven>
 </beans>
